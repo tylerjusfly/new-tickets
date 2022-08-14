@@ -74,7 +74,7 @@ export default function Tickets() {
   const asyncPostCall = async (shopname, ticketid, comment) => {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_AnyBuyBackend}/api/v1/tickets/add/comment`,
+        `${REACT_APP_DBURL}/api/v1/tickets/add/comment`,
         {
           method: "POST",
           headers: {
