@@ -1,0 +1,17 @@
+.Ticket--details{
+  background: #444;
+  color: white;
+  display: flex;
+  gap: 20px;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
+  flex-direction: column;
+  padding: 5px;
+  margin-top: 15px;
+}
+
+.Ticket--details:nth-child(n){
+  font-size: 16px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+
+}

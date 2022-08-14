@@ -1,0 +1,66 @@
+body{
+  background-color: #444;
+  color: white;
+}
+.Tickets{
+  height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: row;
+}
+
+.ticket--menu{
+      flex: 3.5;
+}
+
+.ticketMenuBtn{
+  width: 60%;
+  padding: 10px 0 10px 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.ticket--Chat{
+  flex: 6.5;
+}
+
+.ticket-chat-bottom{
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.chatBoxWrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.ticket-chat-top{
+  height: 100%;
+  /* sidebar scroll */
+  overflow-y: scroll;
+  padding-right: 10px;
+}
+
+.chat-message-input{
+  width: 70%;
+  height: 80px;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+}
+.send-message-button{
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #1877f2;
+  color: white;
+  font-weight: 500;
+}
+
+.ticketChatWrapper, .ticket-menu-wrapper{
+  padding: 10px;
+  height: 100%;
+}

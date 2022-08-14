@@ -1,0 +1,37 @@
+
+		div.logo {
+			height: 200px;
+			width: 155px;
+			display: inline-block;
+			opacity: 0.08;
+			position: absolute;
+			top: 2rem;
+			left: 50%;
+			margin-left: -73px;
+		}
+		
+		.Not--found {
+			font-weight: lighter;
+			letter-spacing: 0.8;
+			font-size: 3rem;
+			margin-top: 0;
+			margin-bottom: 0;
+			color: #222;
+		}
+		.wrap {
+            font-weight: 300;
+			max-width: 1024px;
+			margin: 5rem auto;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+			padding: 2rem;
+			background: #fff;
+            color: #777;
+			text-align: center;
+			border: 1px solid #efefef;
+			border-radius: 0.5rem;
+			position: relative;
+		}
+		.code--code {
+			margin-top: 1.5rem;
+            color: #222;
+		}

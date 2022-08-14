@@ -1,0 +1,11 @@
+.Error--section{
+    margin: 10px;
+    background-color: aliceblue;
+    color: #000;
+    padding: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+}
+
+.Error-text{
+    text-align: center;
+}
