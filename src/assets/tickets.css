@@ -64,3 +64,25 @@ body{
   padding: 10px;
   height: 100%;
 }
+
+/* Mobile size */
+
+@media only screen and (max-width: 500px){
+  
+  .Tickets{
+    flex-direction: column;
+  }
+  .ticket--menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .ticket-chat-bottom{
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 15px;
+  }
+  /* .send-message-button{
+    width: ;
+  } */
+}
