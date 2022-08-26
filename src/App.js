@@ -4,12 +4,22 @@ import Notfound from './components/NotFound';
 import Tickets from './components/Tickets';
 
 export default function App() {
+  const [isLoading, SetIsLoading] = React.useState(true);
+
+  setTimeout(() => {
+    SetIsLoading(false);
+  }, 6000);
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="ticket/:ticketId" element={<Tickets />} />
-        <Route path="*" element={<Notfound />} />
-      </Routes>
+      {isLoading ? (
+        <div>Loading......</div>
+      ) : (
+        <Routes>
+          <Route path="ticket/:ticketId" element={<Tickets />} />
+          <Route path="*" element={<Notfound />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }

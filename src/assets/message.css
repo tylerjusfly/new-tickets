@@ -1,20 +1,22 @@
-.Message{
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-right: 5px;
+.Message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-right: 5px;
 }
 
-.message-text{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
-    padding: 10px;
-    background-color: #1877f2;
-    border-radius: 3px;
-    /* width: 400px; */
+.message-text {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+  padding: 10px;
+  background-color: #1877f2;
+  max-width: 60rem;
+  overflow-wrap: break-word;
+  border-radius: 3px;
+  /* width: 400px; */
 }
-.message-bottom{
-    font-size: 13px;
-    margin-top: 8px;
+.message-bottom {
+  font-size: 13px;
+  margin-top: 8px;
 }
 
 /* Owners message*/

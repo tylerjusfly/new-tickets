@@ -1,11 +1,9 @@
-import React from "react";
-import "../assets/tickets.css";
-import Message from "./Message";
-import TicketDetails from "./TicketDetails";
-import Error from "./Error";
-import {useParams} from 'react-router-dom'
-//import dotenv from 'dotenv'
-//dotenv.config();
+import React from 'react';
+import '../assets/tickets.css';
+import Message from './Message';
+import TicketDetails from './TicketDetails';
+import Error from './Error';
+import { useParams } from 'react-router-dom';
 
 export default function Tickets() {
   const [messages, setMessages] = React.useState([]);
@@ -15,11 +13,11 @@ export default function Tickets() {
   const [ticketInfo, setTicketinfo] = React.useState([]);
 
   const [comment, setComment] = React.useState({
-    comment: "",
+    comment: '',
   });
 
-  const {ticketId} = useParams();
-  const {REACT_APP_DBURL} = process.env
+  const { ticketId } = useParams();
+  const { REACT_APP_DBURL } = process.env;
 
   React.useEffect(() => {
     fetch(`${REACT_APP_DBURL}/api/v1/ticket/${ticketId}`)
@@ -28,7 +26,7 @@ export default function Tickets() {
       })
       .then((data) => {
         if (!data.ticket.length > 0) {
-          throw Error("Could not fetch Data for Resource");
+          throw Error('Could not fetch Data for Resource');
         }
         SetError(false);
         setTicketinfo(data.ticket);
@@ -44,7 +42,7 @@ export default function Tickets() {
         setMessages(data.AllChats);
       })
       .catch((err) => {
-        console.log("err");
+        console.log('err');
         SetError(true);
       });
   }, []);
@@ -58,13 +56,7 @@ export default function Tickets() {
   }
 
   const messageTab = messages.map((message) => {
-    return (
-      <Message
-        key={message.created_at}
-        comment={message.comment}
-        time={message.created_at}
-      />
-    );
+    return <Message key={message.created_at} comment={message.comment} time={message.created_at} />;
   });
 
   const tickdtls = ticketInfo.map((msg) => {
@@ -73,20 +65,17 @@ export default function Tickets() {
 
   const asyncPostCall = async (shopname, ticketid, comment) => {
     try {
-      const response = await fetch(
-        `${REACT_APP_DBURL}/api/v1/tickets/add/comment`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            shopName: shopname,
-            ticketId: ticketid,
-            comment: comment,
-          }),
-        }
-      );
+      const response = await fetch(`${REACT_APP_DBURL}/api/v1/tickets/add/comment`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          shopName: shopname,
+          ticketId: ticketid,
+          comment: comment,
+        }),
+      });
       const data = await response.json();
       // enter you logic when the fetch is successful
       setMessages((oldMessages) => [...oldMessages, data.result]);
@@ -99,14 +88,10 @@ export default function Tickets() {
 
   async function submitComment(e) {
     e.preventDefault();
-    await asyncPostCall(
-      ticketInfo[0].shopName,
-      ticketInfo[0].ticketId,
-      comment.comment
-    );
+    await asyncPostCall(ticketInfo[0].shopName, ticketInfo[0].ticketId, comment.comment);
     setComment((prev) => ({
       ...prev,
-      comment: "",
+      comment: '',
     }));
   }
 
@@ -123,7 +108,13 @@ export default function Tickets() {
         <div className="ticket--Chat">
           <div className="ticketChatWrapper">
             <div className="ticket-chat-top">
-              {error ? <h1><Error /> </h1> : <div> {messageTab} </div> }
+              {error ? (
+                <h1>
+                  <Error />{' '}
+                </h1>
+              ) : (
+                <div> {messageTab} </div>
+              )}
             </div>
             {!error && (
               <form className="ticket-chat-bottom" onSubmit={submitComment}>
