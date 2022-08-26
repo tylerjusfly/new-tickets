@@ -2,18 +2,19 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Notfound from './components/NotFound';
 import Tickets from './components/Tickets';
+import Loader from './components/Loader';
 
 export default function App() {
   const [isLoading, SetIsLoading] = React.useState(true);
 
   setTimeout(() => {
     SetIsLoading(false);
-  }, 6000);
+  }, 5000);
 
   return (
     <BrowserRouter>
       {isLoading ? (
-        <div>Loading......</div>
+        <Loader />
       ) : (
         <Routes>
           <Route path="ticket/:ticketId" element={<Tickets />} />
