@@ -1,6 +1,7 @@
 import React from 'react';
 import '../assets/tickets.css';
 import Message from './Message';
+import Loader from './Loader';
 import TicketDetails from './TicketDetails';
 import Error from './Error';
 import { useParams } from 'react-router-dom';
@@ -95,7 +96,9 @@ export default function Tickets() {
     }));
   }
 
-  return (
+  return !messages ? (
+    <Loader />
+  ) : (
     <>
       <div className="Tickets">
         <div className="ticket--menu">

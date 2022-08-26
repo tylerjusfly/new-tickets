@@ -4,7 +4,8 @@ import '../assets/loader.css';
 export default function () {
   return (
     <div className="loader">
-      <div></div>
+      <div className="circle-spinner"></div>
+      <div>Fetching Chats </div>
     </div>
   );
 }

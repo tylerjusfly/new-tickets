@@ -5,11 +5,11 @@ import Tickets from './components/Tickets';
 import Loader from './components/Loader';
 
 export default function App() {
-  const [isLoading, SetIsLoading] = React.useState(true);
+  const [isLoading, SetIsLoading] = React.useState(false);
 
-  setTimeout(() => {
-    SetIsLoading(false);
-  }, 5000);
+  // setTimeout(() => {
+  //   SetIsLoading(false);
+  // }, 5000);
 
   return (
     <BrowserRouter>
