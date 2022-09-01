@@ -9,7 +9,7 @@ export default function App() {
 
   setTimeout(() => {
     SetIsLoading(false);
-  }, 5000);
+  }, 2000);
 
   return (
     <BrowserRouter>
