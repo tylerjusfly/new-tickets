@@ -6,16 +6,23 @@ import Loader from './Loader';
 import Error from './Error';
 import { useParams } from 'react-router-dom';
 import { useTicket } from '../hooks/useTicket';
+import waiting from '../assets/images/waiting.gif';
 
 export default function Tickets() {
   const [comment, setComment] = React.useState({
     comment: ''
   });
+  const [sending, setIsSending] = React.useState(false);
+  const ScrollRef = React.useRef();
 
   const { ticketId } = useParams();
 
   //Custom Hooks
   const { messages, ticketInfo, error, asyncPostCall, loading } = useTicket(ticketId);
+
+  React.useEffect(() => {
+    ScrollRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
 
   function handleChange(event) {
     let { name, value } = event.target;
@@ -26,7 +33,11 @@ export default function Tickets() {
   }
 
   const messageTab = messages.map((message) => {
-    return <Message key={message.created_at} comment={message.comment} time={message.created_at} />;
+    return (
+      <div ref={ScrollRef}>
+        <Message key={message.created_at} comment={message.comment} time={message.created_at} />
+      </div>
+    );
   });
 
   const tickdtls = ticketInfo.map((msg) => {
@@ -35,11 +46,13 @@ export default function Tickets() {
 
   async function submitComment(e) {
     e.preventDefault();
+    setIsSending(true);
     await asyncPostCall(ticketInfo[0].shopName, ticketInfo[0].ticketId, comment.comment);
     setComment((prev) => ({
       ...prev,
       comment: ''
     }));
+    setIsSending(false);
   }
 
   return (
@@ -59,7 +72,7 @@ export default function Tickets() {
               <div className="ticket-chat-top">
                 {error ? (
                   <h1>
-                    <Error />{' '}
+                    <Error />
                   </h1>
                 ) : (
                   <div> {messageTab} </div>
@@ -74,7 +87,9 @@ export default function Tickets() {
                     name="comment"
                     onChange={handleChange}
                   ></textarea>
-                  <button className="send-message-button"> Send </button>
+                  <button className="send-message-button">
+                    {sending ? <img src={waiting} alt="submitting" /> : 'Send'}
+                  </button>
                 </form>
               )}
             </div>
