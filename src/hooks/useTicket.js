@@ -42,13 +42,13 @@ export function useTicket(ticketId) {
       const response = await fetch(`${REACT_APP_DBURL}/api/v1/tickets/add/comment`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           shopName: shopname,
           ticketId: ticketid,
-          comment: comment,
-        }),
+          comment: comment
+        })
       });
       const data = await response.json();
       // enter you logic when the fetch is successful
@@ -66,6 +66,6 @@ export function useTicket(ticketId) {
     ticketInfo,
     error,
     asyncPostCall,
-    loading,
+    loading
   };
 }
